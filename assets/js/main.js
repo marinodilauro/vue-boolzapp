@@ -212,19 +212,30 @@ createApp({
      */
     searchContact() {
 
-      if (this.searchBarInput.length === 1) {
-        return this.contacts.filter(contact => contact.name[0].toLowerCase().includes(this.searchBarInput.toLowerCase()));
+      let contactslist;
+
+      if (!this.searchBarInput.length) {
+
+        contactslist = this.contacts;
+
+      } else if (this.searchBarInput.length === 1) {
+
+        contactslist = this.contacts.filter(contact => contact.name[0].toLowerCase().includes(this.searchBarInput.toLowerCase()));
+
       } else if (this.searchBarInput.length >= 2) {
-        return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.searchBarInput.toLowerCase()));
-      } else {
-        return this.contacts;
+
+        contactslist = this.contacts.filter(contact => contact.name.toLowerCase().includes(this.searchBarInput.toLowerCase()))
+
       };
+
+      return contactslist;
 
     },
 
     /** Function to write messages
      * 
      * The function takes the message written by the user and pushes it in the array of messages with the contact the user is chatting with.
+     * Then clears the input.
      * 
      * @param {number} activeContactIndex The index of the contact you are chatting with
      */
@@ -238,6 +249,9 @@ createApp({
 
     /** Function to receive a placeholder reply message
      * 
+     * The function send a placeholder reply message in the chat of the contact the user is chatting with.
+     * 
+     * @param {number} activeContactIndex The index of the contact you are chatting with
      */
     replyMessage(activeContactIndex) {
 
