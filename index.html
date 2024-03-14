@@ -77,7 +77,7 @@
               <div class="text_overflow hide_md">
                 <p class="contact_name">{{contact.name}}</p>
                 <p class="last_message text_overflow">{{contact.messages.at(-1).message}}</p>
-                <p class="time p_absolute">{{contact.messages.at(-1).date}}</p>
+                <p class="time p_absolute">{{messageTimeWithoutSeconds(activeContact)}}</p>
               </div>
             </div>
 
@@ -97,7 +97,8 @@
               <div class="text_overflow">
                 <p class="contact_name">Michele</p>
                 <p class="last_access text_overflow"> Ultimo accesso il
-                  {{contacts[activeContact].messages.at(-1).date}}</p>
+                  {{contacts[activeContact].messages.at(-1).date.split(' ')[0]}} alle
+                  {{messageTimeWithoutSeconds(activeContact)}}</p>
               </div>
             </div>
             <ul class="icon_group d_flex hide_sm">
@@ -170,7 +171,9 @@
                 </div>
               </div>
 
-              <p class="time flex_align_self_end">{{message.date}}</p>
+              <p class="time flex_align_self_end">
+                {{messageTimeWithoutSeconds(activeContact)}}
+              </p>
 
             </div>
           </div>

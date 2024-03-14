@@ -6,7 +6,7 @@ createApp({
       receivedMessage: null,
       activeContact: 0,
       newMessage: {
-        date: luxon.DateTime.now(),
+        date: `${luxon.DateTime.now().toLocaleString(luxon.DateTime.DATE_SHORT)} ${luxon.DateTime.now().toLocaleString(luxon.DateTime.TIME_24_SIMPLE)}`,
         message: '',
         status: 'sent'
       },
@@ -180,6 +180,15 @@ createApp({
     }
   },
   methods: {
+
+    messageTimeWithoutSeconds(activeContactIndex) {
+      const messageHour = this.contacts[activeContactIndex].messages.at(-1).date.split(' ').slice(1, 2)[0].split(':')[0];
+      const messageMinute = this.contacts[activeContactIndex].messages.at(-1).date.split(' ').slice(1, 2)[0].split(':')[1];
+
+      const messageNewTime = `${messageHour}:${messageMinute}`;
+
+      return messageNewTime;
+    },
 
     addMessage(activeContactIndex) {
 
