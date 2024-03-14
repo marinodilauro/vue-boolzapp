@@ -182,7 +182,9 @@ createApp({
   },
   methods: {
 
+    // Function to show only hours and minutes in messages time
     messageTimeWithoutSeconds(activeContactIndex) {
+
       const messageHour = this.contacts[activeContactIndex].messages.at(-1).date.split(' ').slice(1, 2)[0].split(':')[0];
       const messageMinute = this.contacts[activeContactIndex].messages.at(-1).date.split(' ').slice(1, 2)[0].split(':')[1];
 
@@ -191,9 +193,16 @@ createApp({
       return messageNewTime;
     },
 
+    // Function to search in contacts list
     searchContact() {
 
-      return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.searchBarInput.toLowerCase()));
+      if (this.searchBarInput.length === 1) {
+        return this.contacts.filter(contact => contact.name[0].toLowerCase().includes(this.searchBarInput.toLowerCase()));
+      } else if (this.searchBarInput.length >= 2) {
+        return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.searchBarInput.toLowerCase()));
+      } else {
+        return this.contacts;
+      };
 
     },
 
@@ -205,7 +214,8 @@ createApp({
     },
 
     replyMessage(activeContactIndex) {
-      const timeToReply = setTimeout(() => {
+
+      setTimeout(() => {
 
         console.log(this.newMessage);
         receivedMessage = { ...this.newMessage, message: 'OK', status: 'received' };
