@@ -5,6 +5,7 @@ createApp({
     return {
       receivedMessage: null,
       activeContact: 0,
+      searchBarInput: '',
       newMessage: {
         date: `${luxon.DateTime.now().toLocaleString(luxon.DateTime.DATE_SHORT)} ${luxon.DateTime.now().toLocaleString(luxon.DateTime.TIME_24_SIMPLE)}`,
         message: '',
@@ -188,6 +189,12 @@ createApp({
       const messageNewTime = `${messageHour}:${messageMinute}`;
 
       return messageNewTime;
+    },
+
+    searchContact() {
+
+      return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.searchBarInput.toLowerCase()));
+
     },
 
     addMessage(activeContactIndex) {

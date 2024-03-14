@@ -63,14 +63,16 @@
           <div class="search d_flex flex_center hide_md">
             <div class="search_bar d_flex flex_center">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="search" placeholder="Cerca o inizia una nuova chat">
+              <input type="search" placeholder="Cerca o inizia una nuova chat" v-model="searchBarInput"
+                @keydown="searchContact()">
             </div>
           </div>
 
           <!-- Contacts -->
           <div class="contacts text_overflow">
 
-            <div class="contact d_flex p_relative" v-for="(contact, index) in contacts" @click="activeContact = index">
+            <div class="contact d_flex p_relative" v-for="(contact, index) in searchContact()"
+              @click="activeContact = index">
               <div class="profile_pic d_flex">
                 <img :src="contact.avatar" alt="">
               </div>
