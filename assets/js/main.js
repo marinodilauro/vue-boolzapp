@@ -3,6 +3,8 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
+
+      activeContact: 0,
       // Contacts list
       contacts: [
         {
@@ -168,6 +170,14 @@ createApp({
           ],
         }
       ]
+
     }
+  },
+  methods: {
+
+    showContactChat() {
+
+    }
+
   }
 }).mount('#app')

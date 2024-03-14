@@ -44,6 +44,16 @@
   align-items: center;
 }
 
+.flex_align_self_end {
+  justify-content: center;
+  align-self: end;
+}
+
+.flex_align_self_start {
+  justify-content: center;
+  align-self: start;
+}
+
 .col_1 {
   width: calc(100% / 12);
 }
@@ -301,6 +311,12 @@ body {
           font-size: 0.8rem;
         }
       }
+
+      .contact:hover {
+        background-color: lightgray;
+        cursor: pointer;
+      }
+
     }
   }
 
@@ -332,8 +348,12 @@ body {
       gap: 0.7rem;
       background-image: url("../img/mine.jpg");
 
-      .sent_message,
-      .received_message {
+      .baloon {
+        min-width: 150px;
+      }
+
+      .sent,
+      .received {
         border-radius: 10px;
         max-width: 70%;
       }
@@ -347,19 +367,19 @@ body {
         padding: 1rem 0 1rem 1rem;
       }
 
-      .sent_message {
+      .sent {
         align-self: flex-end;
         background-color: var(--bz-sent_msg);
       }
 
-      .received_message {
+      .received {
         align-self: flex-start;
         background-color: var(--bz-received_msg);
       }
 
       .msg_menu {
         justify-content: space-between;
-        padding: 0.5rem 0.5rem 0.5rem 0;
+        padding: 0.5rem;
         position: relative;
       }
 
@@ -416,6 +436,7 @@ body {
 
       .time {
         font-size: 0.7rem;
+        padding-right: 0.5rem;
       }
     }
 

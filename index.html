@@ -70,14 +70,14 @@
           <!-- Contacts -->
           <div class="contacts text_overflow">
 
-            <div class="contact d_flex p_relative" v-for="contact in contacts">
+            <div class="contact d_flex p_relative" v-for="(contact, index) in contacts" @click="activeContact = index">
               <div class="profile_pic d_flex">
                 <img :src="contact.avatar" alt="">
               </div>
               <div class="text_overflow hide_md">
                 <p class="contact_name">{{contact.name}}</p>
-                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
-                <p class="time p_absolute">16:15</p>
+                <p class="last_message text_overflow">{{contact.messages.at(-1).message}}</p>
+                <p class="time p_absolute">{{contact.messages.at(-1).date}}</p>
               </div>
             </div>
 
@@ -93,10 +93,11 @@
           <!-- Active contact -->
           <div class="active_contact d_flex flex_space_between">
             <div class="profile_pic d_flex">
-              <img src="./assets/img/avatar_1.jpg" alt="">
+              <img :src="contacts[activeContact].avatar" alt="">
               <div class="text_overflow">
                 <p class="contact_name">Michele</p>
-                <p class="last_access text_overflow">Ultimo accesso oggi alle 16:26</p>
+                <p class="last_access text_overflow"> Ultimo accesso il
+                  {{contacts[activeContact].messages.at(-1).date}}</p>
               </div>
             </div>
             <ul class="icon_group d_flex hide_sm">
@@ -109,248 +110,69 @@
           <!-- Chat -->
           <div class="chat d_flex flex_column">
 
-            <div class="sent_message d_flex">
-              <div class="message">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, laudantium
-                vitae quod commodi, illo maxime culpa earum odit pariatur reiciendis repudiandae nam! Eligendi
-                consequatur itaque ipsum, nostrum quaerat ut quisquam.
-              </div>
+            <div class=" d_flex flex_column flex_space_between" v-for="message in contacts[activeContact].messages"
+              :class="message.status">
+              <div class="d_flex">
 
-              <!-- Dropdown menu -->
-              <div class="msg_menu d_flex flex_column">
-                <i class="msg_options_icon fa-solid fa-chevron-down"></i>
-                <div class="msg_actions hide">
+                <!-- Message -->
+                <div class="message"> {{message.message}} </div>
 
-                  <!-- Reactions -->
-                  <div class="reactions">
-                    <ul class="d_flex">
-                      <li class="d_flex"><a href="#">👍</a></li>
-                      <li class="d_flex"><a href="#">❤️</a></li>
-                      <li class="d_flex"><a href="#">😂</a></li>
-                      <li class="d_flex"><a href="#">😯</a></li>
-                      <li class="d_flex"><a href="#">😢</a></li>
-                    </ul>
-                  </div>
-                  <hr>
+                <!-- Dropdown menu -->
+                <div class="msg_menu d_flex flex_column flex_align_self_start">
+                  <i class="msg_options_icon fa-solid fa-chevron-down"></i>
+                  <div class="msg_actions hide">
 
-                  <!-- Reply and Copy-->
-                  <div class="reply">
-                    <a href="#"><i class="fa-solid fa-reply"></i>
-                      Rispondi</a>
-                  </div>
-                  <div class="copy">
-                    <a href="#"><i class="fa-solid fa-copy"></i>
-                      Copia</a>
-                  </div>
-                  <hr>
+                    <!-- Reactions -->
+                    <div class="reactions">
+                      <ul class="d_flex">
+                        <li class="d_flex"><a href="#">👍</a></li>
+                        <li class="d_flex"><a href="#">❤️</a></li>
+                        <li class="d_flex"><a href="#">😂</a></li>
+                        <li class="d_flex"><a href="#">😯</a></li>
+                        <li class="d_flex"><a href="#">😢</a></li>
+                      </ul>
+                    </div>
+                    <hr>
 
-                  <!-- Forward, Important and Delete -->
-                  <div class="forward">
-                    <a href="#"><i class="fa-solid fa-share"></i>
-                      Inoltra</a>
-                  </div>
-                  <div class="important">
-                    <a href="#"> <i class="fa-regular fa-star"></i>
-                      Importante</a>
-                  </div>
-                  <div class="delete">
-                    <a href="#"> <i class="fa-regular fa-trash-can"></i>
-                      Elimina</a>
-                  </div>
-                  <hr>
+                    <!-- Reply and Copy-->
+                    <div class="reply">
+                      <a href="#"><i class="fa-solid fa-reply"></i>
+                        Rispondi</a>
+                    </div>
+                    <div class="copy">
+                      <a href="#"><i class="fa-solid fa-copy"></i>
+                        Copia</a>
+                    </div>
+                    <hr>
 
-                  <!-- Select -->
-                  <div class="select">
-                    <a href="#"><i class="fa-regular fa-square-check"></i>
-                      Seleziona</a>
-                  </div>
+                    <!-- Forward, Important and Delete -->
+                    <div class="forward">
+                      <a href="#"><i class="fa-solid fa-share"></i>
+                        Inoltra</a>
+                    </div>
+                    <div class="important">
+                      <a href="#"> <i class="fa-regular fa-star"></i>
+                        Importante</a>
+                    </div>
+                    <div class="delete">
+                      <a href="#"> <i class="fa-regular fa-trash-can"></i>
+                        Elimina</a>
+                    </div>
+                    <hr>
 
+                    <!-- Select -->
+                    <div class="select">
+                      <a href="#"><i class="fa-regular fa-square-check"></i>
+                        Seleziona</a>
+                    </div>
+
+                  </div>
                 </div>
-
-                <p class="time">16:13</p>
               </div>
+
+              <p class="time flex_align_self_end">{{message.date}}</p>
+
             </div>
-
-            <div class="received_message d_flex">
-              <div class="message">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, laudantium
-                vitae quod commodi, illo maxime culpa earum odit pariatur reiciendis repudiandae nam!
-              </div>
-
-              <!-- Dropdown menu -->
-              <div class="msg_menu d_flex flex_column">
-                <i class="msg_options_icon fa-solid fa-chevron-down"></i>
-                <div class="msg_actions hide">
-
-                  <!-- Reactions -->
-                  <div class="reactions">
-                    <ul class="d_flex">
-                      <li class="d_flex"><a href="#">👍</a></li>
-                      <li class="d_flex"><a href="#">❤️</a></li>
-                      <li class="d_flex"><a href="#">😂</a></li>
-                      <li class="d_flex"><a href="#">😯</a></li>
-                      <li class="d_flex"><a href="#">😢</a></li>
-                    </ul>
-                  </div>
-                  <hr>
-
-                  <!-- Reply and Copy-->
-                  <div class="reply">
-                    <a href="#"><i class="fa-solid fa-reply"></i>
-                      Rispondi</a>
-                  </div>
-                  <div class="copy">
-                    <a href="#"><i class="fa-solid fa-copy"></i>
-                      Copia</a>
-                  </div>
-                  <hr>
-
-                  <!-- Forward, Important and Delete -->
-                  <div class="forward">
-                    <a href="#"><i class="fa-solid fa-share"></i>
-                      Inoltra</a>
-                  </div>
-                  <div class="important">
-                    <a href="#"> <i class="fa-regular fa-star"></i>
-                      Importante</a>
-                  </div>
-                  <div class="delete">
-                    <a href="#"> <i class="fa-regular fa-trash-can"></i>
-                      Elimina</a>
-                  </div>
-                  <hr>
-
-                  <!-- Select -->
-                  <div class="select">
-                    <a href="#"><i class="fa-regular fa-square-check"></i>
-                      Seleziona</a>
-                  </div>
-
-                </div>
-
-                <p class="time">16:13</p>
-              </div>
-            </div>
-
-            <div class="received_message d_flex">
-              <div class="message">Lorem ipsum dolor sit!
-              </div>
-
-              <!-- Dropdown menu -->
-              <div class="msg_menu d_flex flex_column">
-                <i class="msg_options_icon fa-solid fa-chevron-down"></i>
-                <div class="msg_actions hide">
-
-                  <!-- Reactions -->
-                  <div class="reactions">
-                    <ul class="d_flex">
-                      <li class="d_flex"><a href="#">👍</a></li>
-                      <li class="d_flex"><a href="#">❤️</a></li>
-                      <li class="d_flex"><a href="#">😂</a></li>
-                      <li class="d_flex"><a href="#">😯</a></li>
-                      <li class="d_flex"><a href="#">😢</a></li>
-                    </ul>
-                  </div>
-                  <hr>
-
-                  <!-- Reply and Copy-->
-                  <div class="reply">
-                    <a href="#"><i class="fa-solid fa-reply"></i>
-                      Rispondi</a>
-                  </div>
-                  <div class="copy">
-                    <a href="#"><i class="fa-solid fa-copy"></i>
-                      Copia</a>
-                  </div>
-                  <hr>
-
-                  <!-- Forward, Important and Delete -->
-                  <div class="forward">
-                    <a href="#"><i class="fa-solid fa-share"></i>
-                      Inoltra</a>
-                  </div>
-                  <div class="important">
-                    <a href="#"> <i class="fa-regular fa-star"></i>
-                      Importante</a>
-                  </div>
-                  <div class="delete">
-                    <a href="#"> <i class="fa-regular fa-trash-can"></i>
-                      Elimina</a>
-                  </div>
-                  <hr>
-
-                  <!-- Select -->
-                  <div class="select">
-                    <a href="#"><i class="fa-regular fa-square-check"></i>
-                      Seleziona</a>
-                  </div>
-
-                </div>
-
-                <p class="time">16:13</p>
-              </div>
-            </div>
-
-            <div class="sent_message d_flex">
-              <div class="message">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, laudantium
-                vitae quod commodi, illo maxime culpa earum odit pariatur reiciendis repudiandae nam! Eligendi
-                consequatur itaque ipsum, nostrum quaerat ut quisquam. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Eveniet, soluta.
-              </div>
-
-              <!-- Dropdown menu -->
-              <div class="msg_menu d_flex flex_column">
-                <i class="msg_options_icon fa-solid fa-chevron-down"></i>
-                <div class="msg_actions hide">
-
-                  <!-- Reactions -->
-                  <div class="reactions">
-                    <ul class="d_flex">
-                      <li class="d_flex"><a href="#">👍</a></li>
-                      <li class="d_flex"><a href="#">❤️</a></li>
-                      <li class="d_flex"><a href="#">😂</a></li>
-                      <li class="d_flex"><a href="#">😯</a></li>
-                      <li class="d_flex"><a href="#">😢</a></li>
-                    </ul>
-                  </div>
-                  <hr>
-
-                  <!-- Reply and Copy-->
-                  <div class="reply">
-                    <a href="#"><i class="fa-solid fa-reply"></i>
-                      Rispondi</a>
-                  </div>
-                  <div class="copy">
-                    <a href="#"><i class="fa-solid fa-copy"></i>
-                      Copia</a>
-                  </div>
-                  <hr>
-
-                  <!-- Forward, Important and Delete -->
-                  <div class="forward">
-                    <a href="#"><i class="fa-solid fa-share"></i>
-                      Inoltra</a>
-                  </div>
-                  <div class="important">
-                    <a href="#"> <i class="fa-regular fa-star"></i>
-                      Importante</a>
-                  </div>
-                  <div class="delete">
-                    <a href="#"> <i class="fa-regular fa-trash-can"></i>
-                      Elimina</a>
-                  </div>
-                  <hr>
-
-                  <!-- Select -->
-                  <div class="select">
-                    <a href="#"><i class="fa-regular fa-square-check"></i>
-                      Seleziona</a>
-                  </div>
-
-                </div>
-
-                <p class="time">16:13</p>
-              </div>
-            </div>
-
           </div>
 
           <!-- Input message -->
@@ -364,14 +186,14 @@
       </div>
     </div>
 
+  </div>
 
 
+  <!-- Vue JS Link -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <!-- Vue JS Link -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-    <!-- JS link -->
-    <script src="./assets/js/main.js"></script>
+  <!-- JS link -->
+  <script src="./assets/js/main.js"></script>
 </body>
 
 </html>
