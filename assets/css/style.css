@@ -159,7 +159,7 @@ body {
 
 /* #region ||||| MAIN ||||| */
 
-.app {
+#app {
   width: 80%;
   max-width: 1200px;
   height: 95vh;
@@ -200,9 +200,22 @@ body {
   .left_side {
     border-right: 1px solid var(--bz-lighter_font);
 
+
     .profile,
     .search {
       background-color: var(--bz-light);
+    }
+
+    .profile {
+      .profile_pic {
+        color: var(--bz-dark);
+        font-size: 1.2rem;
+        padding-bottom: 0.2rem;
+
+        img {
+          margin-right: 1rem;
+        }
+      }
     }
 
     .notifications {

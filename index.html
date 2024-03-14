@@ -21,14 +21,14 @@
   <!-- CSS link -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <title>html-css-boolzapp</title>
+  <title>vue-boolzapp</title>
 </head>
 
 <body>
 
   <!-- App -->
 
-  <div class="app">
+  <div id="app">
     <div class="row d_flex">
 
       <!-- Left side -->
@@ -39,6 +39,7 @@
           <div class="profile d_flex flex_space_between">
             <div class="profile_pic d_flex">
               <img src="./assets/img/avatar_io.jpg" alt="">
+              <span>Sofia</span>
             </div>
             <ul class="icon_group d_flex hide_md">
               <li><a href="#"><i class="fa-solid fa-lg fa-circle-notch"></i></a></li>
@@ -69,113 +70,14 @@
           <!-- Contacts -->
           <div class="contacts text_overflow">
 
-            <div class="contact d_flex p_relative">
+            <div class="contact d_flex p_relative" v-for="contact in contacts">
               <div class="profile_pic d_flex">
-                <img src="./assets/img/avatar_1.jpg" alt="">
+                <img :src="contact.avatar" alt="">
               </div>
               <div class="text_overflow hide_md">
-                <p class="contact_name">Michele</p>
+                <p class="contact_name">{{contact.name}}</p>
                 <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
                 <p class="time p_absolute">16:15</p>
-              </div>
-            </div>
-
-            <div class="contact d_flex p_relative">
-              <div class="profile_pic d_flex">
-                <img src="./assets/img/avatar_2.jpg" alt="">
-              </div>
-              <div class="text_overflow hide_md">
-                <p class="contact_name">Fabio</p>
-                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
-                <p class="time p_absolute">16:05</p>
-              </div>
-            </div>
-
-            <div class="contact d_flex p_relative">
-              <div class="profile_pic d_flex">
-                <img src="./assets/img/avatar_3.jpg" alt="">
-              </div>
-              <div class="text_overflow hide_md">
-                <p class="contact_name">Samuele</p>
-                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
-                <p class="time p_absolute">16:03</p>
-              </div>
-            </div>
-
-            <div class="contact d_flex p_relative">
-              <div class="profile_pic d_flex">
-                <img src="./assets/img/avatar_4.jpg" alt="">
-              </div>
-              <div class="text_overflow hide_md">
-                <p class="contact_name">Alessandro B.</p>
-                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
-                <p class="time p_absolute">15:50</p>
-              </div>
-            </div>
-
-            <div class="contact d_flex p_relative">
-              <div class="profile_pic d_flex">
-                <img src="./assets/img/avatar_5.jpg" alt="">
-              </div>
-              <div class="text_overflow hide_md">
-                <p class="contact_name">Alessandro L.</p>
-                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
-                <p class="time p_absolute">15:45</p>
-              </div>
-            </div>
-
-            <div class="contact d_flex p_relative">
-              <div class="profile_pic d_flex">
-                <img src="./assets/img/avatar_6.jpg" alt="">
-              </div>
-              <div class="text_overflow hide_md">
-                <p class="contact_name">Simona</p>
-                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
-                <p class="time p_absolute">15:40</p>
-              </div>
-            </div>
-
-            <div class="contact d_flex p_relative">
-              <div class="profile_pic d_flex">
-                <img src="./assets/img/avatar_7.jpg" alt="">
-              </div>
-              <div class="text_overflow hide_md">
-                <p class="contact_name">Andrea</p>
-                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
-                <p class="time p_absolute">15:37</p>
-              </div>
-            </div>
-
-            <div class="contact d_flex p_relative">
-              <div class="profile_pic d_flex">
-                <img src="./assets/img/avatar_8.jpg" alt="">
-              </div>
-              <div class="text_overflow hide_md">
-                <p class="contact_name">Marino</p>
-                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
-                <p class="time p_absolute">15:30</p>
-              </div>
-            </div>
-
-            <div class="contact d_flex p_relative">
-              <div class="profile_pic d_flex">
-                <img src="./assets/img/avatar_5.jpg" alt="">
-              </div>
-              <div class="text_overflow hide_md">
-                <p class="contact_name">Giuseppe</p>
-                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
-                <p class="time p_absolute">15:25</p>
-              </div>
-            </div>
-
-            <div class="contact d_flex p_relative">
-              <div class="profile_pic d_flex">
-                <img src="./assets/img/avatar_4.jpg" alt="">
-              </div>
-              <div class="text_overflow hide_md">
-                <p class="contact_name">Roberto</p>
-                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
-                <p class="time p_absolute">15:15</p>
               </div>
             </div>
 
