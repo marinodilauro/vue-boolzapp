@@ -44,6 +44,11 @@
   align-items: center;
 }
 
+.flex_end {
+  justify-content: center;
+  align-items: end;
+}
+
 .flex_align_self_end {
   justify-content: center;
   align-self: end;
