@@ -20,65 +20,6 @@
   --bz-dropdown_bg: rgba(234, 234, 234, 1);
 }
 
-.d_flex {
-  display: flex;
-}
-
-.flex_column {
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.flex_space_between {
-  justify-content: space-between;
-  align-items: center;
-}
-
-.flex_space_evenly {
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.flex_center {
-  justify-content: center;
-  align-items: center;
-}
-
-.flex_end {
-  justify-content: center;
-  align-items: end;
-}
-
-.flex_align_self_end {
-  justify-content: center;
-  align-self: end;
-}
-
-.flex_align_self_start {
-  justify-content: center;
-  align-self: start;
-}
-
-.col_1 {
-  width: calc(100% / 12);
-}
-
-.col_4 {
-  width: calc((100% / 12) * 4);
-}
-
-.col_8 {
-  width: calc((100% / 12) * 8);
-}
-
-.col_11 {
-  width: calc((100% / 12) * 11);
-}
-
-.col_12 {
-  width: 100%;
-}
-
 .hide {
   display: none;
 }
@@ -174,26 +115,10 @@ body {
 
 /* #region ||||| MAIN ||||| */
 
-#app {
-  width: 80%;
-  max-width: 1200px;
-  height: 95vh;
-  margin: 1rem auto 2rem;
+.container {
   border-radius: 10px;
   border: 1px solid var(--bz-lighter_font);
   overflow-y: hidden;
-
-  .row,
-  .col_8,
-  .left_side,
-  .right_side {
-    height: 100%;
-  }
-
-  .left_side,
-  .right_side {
-    width: 100%;
-  }
 
   .contacts,
   .chat {
@@ -214,7 +139,6 @@ body {
 
   .left_side {
     border-right: 1px solid var(--bz-lighter_font);
-
 
     .profile,
     .search {
@@ -274,6 +198,7 @@ body {
 
         input[type=search] {
           width: 85%;
+          height: 30px;
           padding: 0.5rem 0;
           border: none;
           outline: none;
@@ -300,7 +225,6 @@ body {
         .contact_name {
           color: var(--bz-dark);
           font-size: 1.2rem;
-          padding-bottom: 0.2rem;
         }
 
         .last_message,
@@ -473,15 +397,6 @@ body {
 
 @media screen and (max-width:991px) {
 
-  .col_md_1 {
-    width: calc(100% / 12);
-    min-width: 80px;
-  }
-
-  .col_md_11 {
-    width: calc((100% / 12) * 11);
-  }
-
   .hide_md {
     display: none;
   }
@@ -537,9 +452,7 @@ body {
 
 @media screen and (max-width:540px) {
 
-  .col_sm_12 {
-    width: 100%;
-  }
+
 
   .hide_sm {
     display: none;
