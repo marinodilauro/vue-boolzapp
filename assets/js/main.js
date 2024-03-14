@@ -3,6 +3,7 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
+      receivedMessage: null,
       activeContact: 0,
       newMessage: {
         date: luxon.DateTime.now(),
@@ -180,11 +181,28 @@ createApp({
   },
   methods: {
 
-    addMessage(index) {
+    addMessage(activeContactIndex) {
 
-      this.contacts[index].messages.push(this.newMessage);
+      this.contacts[activeContactIndex].messages.push(this.newMessage);
+      console.log(this.newMessage);
       this.newMessage = { ...this.newMessage, message: '' };
+    },
+
+    replyMessage(activeContactIndex) {
+      const timeToReply = setTimeout(() => {
+
+        console.log(this.newMessage);
+        receivedMessage = { ...this.newMessage, message: 'OK', status: 'received' };
+        console.log(receivedMessage);
+        console.log(this.contacts[0].messages);
+        this.contacts[activeContactIndex].messages.push(receivedMessage);
+        console.log(this.contacts[activeContactIndex].messages);
+
+      }, 1000, activeContactIndex)
     }
+
+  },
+  mounted() {
 
   }
 }).mount('#app')
