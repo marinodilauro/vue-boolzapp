@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google font link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Fontawesome link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <!-- CSS link -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <title>html-css-boolzapp</title>
+</head>
+
+<body>
+
+  <!-- App -->
+
+  <div class="app">
+    <div class="row d_flex">
+
+      <!-- Left side -->
+      <div class="col_4 col_md_1 hide_sm">
+        <div class="left_side">
+
+          <!-- Profile -->
+          <div class="profile d_flex flex_space_between">
+            <div class="profile_pic d_flex">
+              <img src="./assets/img/avatar_io.jpg" alt="">
+            </div>
+            <ul class="icon_group d_flex hide_md">
+              <li><a href="#"><i class="fa-solid fa-lg fa-circle-notch"></i></a></li>
+              <li><a href="#"><i class="fa-solid fa-lg fa-message"></i></a></li>
+              <li><a href="#"><i class="fa-solid fa-lg fa-ellipsis-vertical"></a></i></li>
+            </ul>
+          </div>
+
+          <!-- Notifications -->
+          <div class="notifications d_flex hide_md">
+            <div class="notification_icon d_flex flex_center">
+              <i class="fa-solid fa-lg fa-bell-slash"></i>
+            </div>
+            <div class="toggle_notifications text_overflow">
+              <p class="text_overflow">Ricevi notifiche di nuovi messaggi</p>
+              <a href="#">Attiva notifiche desktop</a>
+            </div>
+          </div>
+
+          <!-- Search bar -->
+          <div class="search d_flex flex_center hide_md">
+            <div class="search_bar d_flex flex_center">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="search" placeholder="Cerca o inizia una nuova chat">
+            </div>
+          </div>
+
+          <!-- Contacts -->
+          <div class="contacts text_overflow">
+
+            <div class="contact d_flex p_relative">
+              <div class="profile_pic d_flex">
+                <img src="./assets/img/avatar_1.jpg" alt="">
+              </div>
+              <div class="text_overflow hide_md">
+                <p class="contact_name">Michele</p>
+                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
+                <p class="time p_absolute">16:15</p>
+              </div>
+            </div>
+
+            <div class="contact d_flex p_relative">
+              <div class="profile_pic d_flex">
+                <img src="./assets/img/avatar_2.jpg" alt="">
+              </div>
+              <div class="text_overflow hide_md">
+                <p class="contact_name">Fabio</p>
+                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
+                <p class="time p_absolute">16:05</p>
+              </div>
+            </div>
+
+            <div class="contact d_flex p_relative">
+              <div class="profile_pic d_flex">
+                <img src="./assets/img/avatar_3.jpg" alt="">
+              </div>
+              <div class="text_overflow hide_md">
+                <p class="contact_name">Samuele</p>
+                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
+                <p class="time p_absolute">16:03</p>
+              </div>
+            </div>
+
+            <div class="contact d_flex p_relative">
+              <div class="profile_pic d_flex">
+                <img src="./assets/img/avatar_4.jpg" alt="">
+              </div>
+              <div class="text_overflow hide_md">
+                <p class="contact_name">Alessandro B.</p>
+                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
+                <p class="time p_absolute">15:50</p>
+              </div>
+            </div>
+
+            <div class="contact d_flex p_relative">
+              <div class="profile_pic d_flex">
+                <img src="./assets/img/avatar_5.jpg" alt="">
+              </div>
+              <div class="text_overflow hide_md">
+                <p class="contact_name">Alessandro L.</p>
+                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
+                <p class="time p_absolute">15:45</p>
+              </div>
+            </div>
+
+            <div class="contact d_flex p_relative">
+              <div class="profile_pic d_flex">
+                <img src="./assets/img/avatar_6.jpg" alt="">
+              </div>
+              <div class="text_overflow hide_md">
+                <p class="contact_name">Simona</p>
+                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
+                <p class="time p_absolute">15:40</p>
+              </div>
+            </div>
+
+            <div class="contact d_flex p_relative">
+              <div class="profile_pic d_flex">
+                <img src="./assets/img/avatar_7.jpg" alt="">
+              </div>
+              <div class="text_overflow hide_md">
+                <p class="contact_name">Andrea</p>
+                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
+                <p class="time p_absolute">15:37</p>
+              </div>
+            </div>
+
+            <div class="contact d_flex p_relative">
+              <div class="profile_pic d_flex">
+                <img src="./assets/img/avatar_8.jpg" alt="">
+              </div>
+              <div class="text_overflow hide_md">
+                <p class="contact_name">Marino</p>
+                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
+                <p class="time p_absolute">15:30</p>
+              </div>
+            </div>
+
+            <div class="contact d_flex p_relative">
+              <div class="profile_pic d_flex">
+                <img src="./assets/img/avatar_5.jpg" alt="">
+              </div>
+              <div class="text_overflow hide_md">
+                <p class="contact_name">Giuseppe</p>
+                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
+                <p class="time p_absolute">15:25</p>
+              </div>
+            </div>
+
+            <div class="contact d_flex p_relative">
+              <div class="profile_pic d_flex">
+                <img src="./assets/img/avatar_4.jpg" alt="">
+              </div>
+              <div class="text_overflow hide_md">
+                <p class="contact_name">Roberto</p>
+                <p class="last_message text_overflow">Lorem ipsum dolor sit amet.</p>
+                <p class="time p_absolute">15:15</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Right side -->
+      <div class="col_8 col_md_11 col_sm_12">
+        <div class="right_side">
+
+          <!-- Active contact -->
+          <div class="active_contact d_flex flex_space_between">
+            <div class="profile_pic d_flex">
+              <img src="./assets/img/avatar_1.jpg" alt="">
+              <div class="text_overflow">
+                <p class="contact_name">Michele</p>
+                <p class="last_access text_overflow">Ultimo accesso oggi alle 16:26</p>
+              </div>
+            </div>
+            <ul class="icon_group d_flex hide_sm">
+              <li><a href="#"><i class="fa-solid fa-lg fa-magnifying-glass"></i></a></li>
+              <li><a href="#"><i class="fa-solid fa-lg fa-paperclip"></i></i></a></li>
+              <li><a href="#"><i class="fa-solid fa-lg fa-ellipsis-vertical"></a></i></li>
+            </ul>
+          </div>
+
+          <!-- Chat -->
+          <div class="chat d_flex flex_column">
+
+            <div class="sent_message d_flex">
+              <div class="message">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, laudantium
+                vitae quod commodi, illo maxime culpa earum odit pariatur reiciendis repudiandae nam! Eligendi
+                consequatur itaque ipsum, nostrum quaerat ut quisquam.
+              </div>
+
+              <!-- Dropdown menu -->
+              <div class="msg_menu d_flex flex_column">
+                <i class="msg_options_icon fa-solid fa-chevron-down"></i>
+                <div class="msg_actions hide">
+
+                  <!-- Reactions -->
+                  <div class="reactions">
+                    <ul class="d_flex">
+                      <li class="d_flex"><a href="#">👍</a></li>
+                      <li class="d_flex"><a href="#">❤️</a></li>
+                      <li class="d_flex"><a href="#">😂</a></li>
+                      <li class="d_flex"><a href="#">😯</a></li>
+                      <li class="d_flex"><a href="#">😢</a></li>
+                    </ul>
+                  </div>
+                  <hr>
+
+                  <!-- Reply and Copy-->
+                  <div class="reply">
+                    <a href="#"><i class="fa-solid fa-reply"></i>
+                      Rispondi</a>
+                  </div>
+                  <div class="copy">
+                    <a href="#"><i class="fa-solid fa-copy"></i>
+                      Copia</a>
+                  </div>
+                  <hr>
+
+                  <!-- Forward, Important and Delete -->
+                  <div class="forward">
+                    <a href="#"><i class="fa-solid fa-share"></i>
+                      Inoltra</a>
+                  </div>
+                  <div class="important">
+                    <a href="#"> <i class="fa-regular fa-star"></i>
+                      Importante</a>
+                  </div>
+                  <div class="delete">
+                    <a href="#"> <i class="fa-regular fa-trash-can"></i>
+                      Elimina</a>
+                  </div>
+                  <hr>
+
+                  <!-- Select -->
+                  <div class="select">
+                    <a href="#"><i class="fa-regular fa-square-check"></i>
+                      Seleziona</a>
+                  </div>
+
+                </div>
+
+                <p class="time">16:13</p>
+              </div>
+            </div>
+
+            <div class="received_message d_flex">
+              <div class="message">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, laudantium
+                vitae quod commodi, illo maxime culpa earum odit pariatur reiciendis repudiandae nam!
+              </div>
+
+              <!-- Dropdown menu -->
+              <div class="msg_menu d_flex flex_column">
+                <i class="msg_options_icon fa-solid fa-chevron-down"></i>
+                <div class="msg_actions hide">
+
+                  <!-- Reactions -->
+                  <div class="reactions">
+                    <ul class="d_flex">
+                      <li class="d_flex"><a href="#">👍</a></li>
+                      <li class="d_flex"><a href="#">❤️</a></li>
+                      <li class="d_flex"><a href="#">😂</a></li>
+                      <li class="d_flex"><a href="#">😯</a></li>
+                      <li class="d_flex"><a href="#">😢</a></li>
+                    </ul>
+                  </div>
+                  <hr>
+
+                  <!-- Reply and Copy-->
+                  <div class="reply">
+                    <a href="#"><i class="fa-solid fa-reply"></i>
+                      Rispondi</a>
+                  </div>
+                  <div class="copy">
+                    <a href="#"><i class="fa-solid fa-copy"></i>
+                      Copia</a>
+                  </div>
+                  <hr>
+
+                  <!-- Forward, Important and Delete -->
+                  <div class="forward">
+                    <a href="#"><i class="fa-solid fa-share"></i>
+                      Inoltra</a>
+                  </div>
+                  <div class="important">
+                    <a href="#"> <i class="fa-regular fa-star"></i>
+                      Importante</a>
+                  </div>
+                  <div class="delete">
+                    <a href="#"> <i class="fa-regular fa-trash-can"></i>
+                      Elimina</a>
+                  </div>
+                  <hr>
+
+                  <!-- Select -->
+                  <div class="select">
+                    <a href="#"><i class="fa-regular fa-square-check"></i>
+                      Seleziona</a>
+                  </div>
+
+                </div>
+
+                <p class="time">16:13</p>
+              </div>
+            </div>
+
+            <div class="received_message d_flex">
+              <div class="message">Lorem ipsum dolor sit!
+              </div>
+
+              <!-- Dropdown menu -->
+              <div class="msg_menu d_flex flex_column">
+                <i class="msg_options_icon fa-solid fa-chevron-down"></i>
+                <div class="msg_actions hide">
+
+                  <!-- Reactions -->
+                  <div class="reactions">
+                    <ul class="d_flex">
+                      <li class="d_flex"><a href="#">👍</a></li>
+                      <li class="d_flex"><a href="#">❤️</a></li>
+                      <li class="d_flex"><a href="#">😂</a></li>
+                      <li class="d_flex"><a href="#">😯</a></li>
+                      <li class="d_flex"><a href="#">😢</a></li>
+                    </ul>
+                  </div>
+                  <hr>
+
+                  <!-- Reply and Copy-->
+                  <div class="reply">
+                    <a href="#"><i class="fa-solid fa-reply"></i>
+                      Rispondi</a>
+                  </div>
+                  <div class="copy">
+                    <a href="#"><i class="fa-solid fa-copy"></i>
+                      Copia</a>
+                  </div>
+                  <hr>
+
+                  <!-- Forward, Important and Delete -->
+                  <div class="forward">
+                    <a href="#"><i class="fa-solid fa-share"></i>
+                      Inoltra</a>
+                  </div>
+                  <div class="important">
+                    <a href="#"> <i class="fa-regular fa-star"></i>
+                      Importante</a>
+                  </div>
+                  <div class="delete">
+                    <a href="#"> <i class="fa-regular fa-trash-can"></i>
+                      Elimina</a>
+                  </div>
+                  <hr>
+
+                  <!-- Select -->
+                  <div class="select">
+                    <a href="#"><i class="fa-regular fa-square-check"></i>
+                      Seleziona</a>
+                  </div>
+
+                </div>
+
+                <p class="time">16:13</p>
+              </div>
+            </div>
+
+            <div class="sent_message d_flex">
+              <div class="message">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, laudantium
+                vitae quod commodi, illo maxime culpa earum odit pariatur reiciendis repudiandae nam! Eligendi
+                consequatur itaque ipsum, nostrum quaerat ut quisquam. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Eveniet, soluta.
+              </div>
+
+              <!-- Dropdown menu -->
+              <div class="msg_menu d_flex flex_column">
+                <i class="msg_options_icon fa-solid fa-chevron-down"></i>
+                <div class="msg_actions hide">
+
+                  <!-- Reactions -->
+                  <div class="reactions">
+                    <ul class="d_flex">
+                      <li class="d_flex"><a href="#">👍</a></li>
+                      <li class="d_flex"><a href="#">❤️</a></li>
+                      <li class="d_flex"><a href="#">😂</a></li>
+                      <li class="d_flex"><a href="#">😯</a></li>
+                      <li class="d_flex"><a href="#">😢</a></li>
+                    </ul>
+                  </div>
+                  <hr>
+
+                  <!-- Reply and Copy-->
+                  <div class="reply">
+                    <a href="#"><i class="fa-solid fa-reply"></i>
+                      Rispondi</a>
+                  </div>
+                  <div class="copy">
+                    <a href="#"><i class="fa-solid fa-copy"></i>
+                      Copia</a>
+                  </div>
+                  <hr>
+
+                  <!-- Forward, Important and Delete -->
+                  <div class="forward">
+                    <a href="#"><i class="fa-solid fa-share"></i>
+                      Inoltra</a>
+                  </div>
+                  <div class="important">
+                    <a href="#"> <i class="fa-regular fa-star"></i>
+                      Importante</a>
+                  </div>
+                  <div class="delete">
+                    <a href="#"> <i class="fa-regular fa-trash-can"></i>
+                      Elimina</a>
+                  </div>
+                  <hr>
+
+                  <!-- Select -->
+                  <div class="select">
+                    <a href="#"><i class="fa-regular fa-square-check"></i>
+                      Seleziona</a>
+                  </div>
+
+                </div>
+
+                <p class="time">16:13</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Input message -->
+          <div class="input_message d_flex">
+            <a href="#"><i class="hide_sm fa-regular fa-xl fa-face-smile"></i></a>
+            <input type="text" placeholder="Scrivi un messaggio">
+            <a href="#"><i class="hide_sm fa-solid fa-xl fa-microphone"></i></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- Vue JS Link -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- JS link -->
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
