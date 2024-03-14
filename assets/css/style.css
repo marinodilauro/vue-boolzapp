@@ -116,6 +116,7 @@ body {
 /* #region ||||| MAIN ||||| */
 
 .container {
+  height: 95vh;
   border-radius: 10px;
   border: 1px solid var(--bz-lighter_font);
   overflow-y: hidden;
@@ -290,10 +291,6 @@ body {
       .time,
       .msg_options_icon {
         color: var(--bz-lighter_font);
-      }
-
-      .message {
-        padding: 1rem 0 1rem 1rem;
       }
 
       .sent {

@@ -182,24 +182,43 @@ createApp({
   },
   methods: {
 
+    newTimeFormat() {
+
+    },
+
     /** Function that show only hours and minutes in messages time
      * 
-     * The function takes the message date and time (in hh:mm:ss) and split this value in two values,
-     * changing the time format in hh:mm and splitting again in two values, hours and minutes.
-     * Then creates a varaible for the hours and assign the first value.
-     * Then creates another varaible for the mionutes and assign the second value.
-     * The function return a template literal with the two variables separated by a ':'.
+     * The function cycles though every message of every contact.
+     * Takes the time format in "dd/mm/yy hh:mm:ss" and splits first in two again in two values, hours and minutes.
+     * Creates two variables for hours and mninutes.
+     * For each variable takes the message time format in "dd/mm/yy hh:mm:ss" and splits it in two parts.
+     * During the assignment of the valus to the hours and minutes variables,
+     * the function splits again the second part of the original date format,
+     * assigning then the first part to the hour variables and the second part to the minute variable.
+     * Then join the two parts in a thir variable for the new time format.
+     * The function finally assign the new date to all the messages in the list.
+     * This works also for the new messages written adn received.
      * 
-     * @param {number} activeContactIndex The index of the contact you are chatting with
      */
-    messageTimeWithoutSeconds(activeContactIndex) {
+    messageTimeWithoutSeconds() {
 
-      const messageHour = this.contacts[activeContactIndex].messages.at(-1).date.split(' ').slice(1, 2)[0].split(':')[0];
-      const messageMinute = this.contacts[activeContactIndex].messages.at(-1).date.split(' ').slice(1, 2)[0].split(':')[1];
+      for (const contact in this.contacts) {
+        if (Object.hasOwnProperty.call(this.contacts, contact)) {
+          const element = this.contacts[contact];
 
-      const messageNewTime = `${messageHour}:${messageMinute}`;
+          for (const property in element.messages) {
+            let prop = element.messages[property];
 
-      return messageNewTime;
+            const messageHour = prop.date.split(' ').slice(1, 2)[0].split(':')[0];
+            const messageMinute = prop.date.split(' ').slice(1, 2)[0].split(':')[1];
+
+            const newTimeFormat = `${messageHour}:${messageMinute}`;
+
+            prop.date = newTimeFormat;
+          }
+
+        };
+      };
 
     },
 
@@ -241,6 +260,14 @@ createApp({
      */
     addMessage(activeContactIndex) {
 
+      const messageHour = this.newMessage.date.split(' ').slice(1, 2)[0].split(':')[0];
+
+      const messageMinute = this.newMessage.date.split(' ').slice(1, 2)[0].split(':')[1];
+
+      const newTimeFormat = `${messageHour}:${messageMinute}`;
+
+      this.newMessage = { ...this.newMessage, date: newTimeFormat };
+
       this.contacts[activeContactIndex].messages.push(this.newMessage);
 
       this.newMessage = { ...this.newMessage, message: '' };
@@ -257,18 +284,15 @@ createApp({
 
       setTimeout(() => {
 
-        console.log(this.newMessage);
-        receivedMessage = { ...this.newMessage, message: 'OK', status: 'received' };
-        console.log(receivedMessage);
-        console.log(this.contacts[0].messages);
+        receivedMessage = { ...this.newMessage, message: 'Ok', status: 'received' };
+
         this.contacts[activeContactIndex].messages.push(receivedMessage);
-        console.log(this.contacts[activeContactIndex].messages);
 
       }, 1000, activeContactIndex)
     }
 
   },
-  mounted() {
-
+  created() {
+    this.messageTimeWithoutSeconds();
   }
 }).mount('#app')

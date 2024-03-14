@@ -32,8 +32,8 @@
   <!-- App -->
 
   <div id="app">
-    <div class="container mt-5 p-0">
-      <div class="row g-0">
+    <div class="container mt-4 p-0">
+      <div class="row h-100 g-0">
 
         <!-- Left side -->
         <div class="col-4 hide_sm">
@@ -81,7 +81,7 @@
                 <div class="text_overflow hide_md d-flex flex-column justify-content-center">
                   <div class="contact_name">{{contact.name}}</div>
                   <div class="last_message text_overflow">{{contact.messages.at(-1).message}}</div>
-                  <div class="time">{{messageTimeWithoutSeconds(activeContact)}}</div>
+                  <div class="time">{{contact.messages.at(-1).date}}</div>
                 </div>
               </div>
 
@@ -102,7 +102,8 @@
                   <div class="contact_name">{{searchContact()[activeContact].name}}</div>
                   <div class="last_access text_overflow"> Ultimo accesso il
                     {{searchContact()[activeContact].messages.at(-1).date.split(' ')[0]}} alle
-                    {{messageTimeWithoutSeconds(activeContact)}}</div>
+                    {{searchContact()[activeContact].messages.at(-1).date}}
+                  </div>
                 </div>
               </div>
               <ul class="icon_group hide_sm d-flex align-items-center m-0">
@@ -116,11 +117,11 @@
             <div class="chat d-flex flex-column align-items-start">
 
               <div class=" d-flex flex-column justify-content-center align-items-end"
-                v-for="message in contacts[activeContact].messages" :class="message.status">
+                v-for="message in searchContact()[activeContact].messages" :class="message.status">
                 <div class="d-flex">
 
                   <!-- Message -->
-                  <div class="message"> {{message.message}} </div>
+                  <div class="message ps-2 pt-2"> {{message.message}} </div>
 
                   <!-- Dropdown menu -->
                   <div class="msg_menu d-flex flex-column justify-content-center align-self-start">
@@ -175,9 +176,9 @@
                   </div>
                 </div>
 
-                <p class="time justify-content-center align-items-end">
-                  {{messageTimeWithoutSeconds(activeContact)}}
-                </p>
+                <div class="time justify-content-center align-items-end">
+                  {{message.date}}
+                </div>
 
               </div>
             </div>
