@@ -182,7 +182,16 @@ createApp({
   },
   methods: {
 
-    // Function to show only hours and minutes in messages time
+    /** Function that show only hours and minutes in messages time
+     * 
+     * The function takes the message date and time (in hh:mm:ss) and split this value in two values,
+     * changing the time format in hh:mm and splitting again in two values, hours and minutes.
+     * Then creates a varaible for the hours and assign the first value.
+     * Then creates another varaible for the mionutes and assign the second value.
+     * The function return a template literal with the two variables separated by a ':'.
+     * 
+     * @param {number} activeContactIndex The index of the contact you are chatting with
+     */
     messageTimeWithoutSeconds(activeContactIndex) {
 
       const messageHour = this.contacts[activeContactIndex].messages.at(-1).date.split(' ').slice(1, 2)[0].split(':')[0];
@@ -191,9 +200,16 @@ createApp({
       const messageNewTime = `${messageHour}:${messageMinute}`;
 
       return messageNewTime;
+
     },
 
-    // Function to search in contacts list
+    /** Function to search in contacts list
+     * 
+     * The function first checks the first character the user enters in the search bar and shows only the contacts whose name begins with that letter.
+     * Then if the user adds another character in the input field the function returns all contacts whose name has the characters entered by the user as first and second letters.
+     * The function continues with all the characters entered by the user.
+     * If the user does not enter any characters in the input field the function shows all contacts in the list.
+     */
     searchContact() {
 
       if (this.searchBarInput.length === 1) {
@@ -206,13 +222,23 @@ createApp({
 
     },
 
+    /** Function to write messages
+     * 
+     * The function takes the message written by the user and pushes it in the array of messages with the contact the user is chatting with.
+     * 
+     * @param {number} activeContactIndex The index of the contact you are chatting with
+     */
     addMessage(activeContactIndex) {
 
       this.contacts[activeContactIndex].messages.push(this.newMessage);
-      console.log(this.newMessage);
+
       this.newMessage = { ...this.newMessage, message: '' };
+
     },
 
+    /** Function to receive a placeholder reply message
+     * 
+     */
     replyMessage(activeContactIndex) {
 
       setTimeout(() => {
