@@ -3,8 +3,13 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-
       activeContact: 0,
+      newMessage: {
+        date: luxon.DateTime.now(),
+        message: '',
+        status: 'sent'
+      },
+
       // Contacts list
       contacts: [
         {
@@ -175,8 +180,10 @@ createApp({
   },
   methods: {
 
-    showContactChat() {
+    addMessage(index) {
 
+      this.contacts[index].messages.push(this.newMessage);
+      this.newMessage = { ...this.newMessage, message: '' };
     }
 
   }
