@@ -81,7 +81,7 @@
                 <div class="text_overflow hide_md d-flex flex-column justify-content-center">
                   <div class="contact_name">{{contact.name}}</div>
                   <div class="last_message text_overflow">{{contact.messages.at(-1).message}}</div>
-                  <div class="time">{{contact.messages.at(-1).date}}</div>
+                  <div class="time">{{contact.messages.at(-1).time}}</div>
                 </div>
               </div>
 
@@ -102,7 +102,7 @@
                   <div class="contact_name">{{searchContact()[activeContact].name}}</div>
                   <div class="last_access text_overflow"> Ultimo accesso il
                     {{searchContact()[activeContact].messages.at(-1).date.split(' ')[0]}} alle
-                    {{searchContact()[activeContact].messages.at(-1).date}}
+                    {{searchContact()[activeContact].messages.at(-1).time}}
                   </div>
                 </div>
               </div>
@@ -117,18 +117,18 @@
             <div class="chat d-flex flex-column align-items-start">
 
               <div class=" d-flex flex-column justify-content-center align-items-end"
-                v-for="message in searchContact()[activeContact].messages" :class="message.status">
+                v-for="(message, index) in searchContact()[activeContact].messages" :class="message.status">
                 <div class="d-flex">
 
                   <!-- Message -->
                   <div class="message ps-2 pt-2"> {{message.message}} </div>
 
-                  <!-- Dropdown menu -->
-                  <div class="msg_menu d-flex flex-column justify-content-center align-self-start">
+
+                  <!--  <div class="msg_menu d-flex flex-column justify-content-center align-self-start">
                     <i class="msg_options_icon fa-solid fa-chevron-down"></i>
                     <div class="msg_actions hide">
 
-                      <!-- Reactions -->
+
                       <div class="reactions">
                         <ul class="d-flex">
                           <li class="d-flex"><a href="#">👍</a></li>
@@ -140,7 +140,7 @@
                       </div>
                       <hr>
 
-                      <!-- Reply and Copy-->
+
                       <div class="reply">
                         <a href="#"><i class="fa-solid fa-reply"></i>
                           Rispondi</a>
@@ -151,7 +151,7 @@
                       </div>
                       <hr>
 
-                      <!-- Forward, Important and Delete -->
+
                       <div class="forward">
                         <a href="#"><i class="fa-solid fa-share"></i>
                           Inoltra</a>
@@ -166,18 +166,42 @@
                       </div>
                       <hr>
 
-                      <!-- Select -->
+
                       <div class="select">
                         <a href="#"><i class="fa-regular fa-square-check"></i>
                           Seleziona</a>
                       </div>
 
                     </div>
+                  </div> -->
+
+                  <div class="dropdown">
+                    <button class="btn backgroud-transparent" type="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="msg_options_icon fa-solid fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <ul class="d-flex justify-content-between p-1">
+                          <li><a class="dropdown-item p-1" href="#">👍</a></li>
+                          <li><a class="dropdown-item p-1" href="#">❤️</a></li>
+                          <li><a class="dropdown-item p-1" href="#">😂</a></li>
+                          <li><a class="dropdown-item p-1" href="#">😯</a></li>
+                          <li><a class="dropdown-item p-1" href="#">😢</a></li>
+                        </ul>
+                      </li>
+                      <hr class="my-1 m-auto">
+                      <li><a class="dropdown-item" href="#">Message info</a></li>
+                      <li><a class="dropdown-item" href="#" @click="deleteMessage(index, activeContact)">Delete
+                          message</a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
 
+
                 <div class="time justify-content-center align-items-end">
-                  {{message.date}}
+                  {{message.time}}
                 </div>
 
               </div>
