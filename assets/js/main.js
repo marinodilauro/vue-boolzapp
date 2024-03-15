@@ -184,12 +184,9 @@ createApp({
 
     deleteMessage(messageIndex, contactIndex) {
 
-      // messageDeleted = `<em>Il messaggio è stato eliminato</em>`;
-
       messagesList = this.searchContact()[contactIndex].messages;
       selectedMessage = this.searchContact()[contactIndex].messages[messageIndex];
       console.log(messageIndex, contactIndex);
-      // selectedMessage.message = messageDeleted;
 
       messagesList.splice(messageIndex, 1);
 

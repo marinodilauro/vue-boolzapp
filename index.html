@@ -181,10 +181,13 @@
 
                   <div class="dropdown">
                     <button class="btn backgroud-transparent" type="button" data-bs-toggle="dropdown"
-                      aria-expanded="false">
+                      aria-expanded="false" data-bs-auto-close="outside">
                       <i class="msg_options_icon fa-solid fa-chevron-down"></i>
                     </button>
+
+
                     <ul class="dropdown-menu">
+
                       <li>
                         <ul class="d-flex justify-content-between p-1">
                           <li><a class="dropdown-item p-1" href="#">👍</a></li>
@@ -193,14 +196,39 @@
                           <li><a class="dropdown-item p-1" href="#">😯</a></li>
                           <li><a class="dropdown-item p-1" href="#">😢</a></li>
                         </ul>
+
                       </li>
-                      <hr class="my-1 m-auto">
-                      <li><a class="dropdown-item" href="#">Message info</a></li>
+
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+
+                      <li class="dropend">
+
+                        <a class="dropdown-item backgroud-transparent text-start" data-bs-toggle="dropdown"
+                          aria-expanded="false" href="#">
+                          Messageinfo
+                        </a>
+
+                        <div class="dropdown-menu p-1 text-body-secondary">
+                          <p style="font-size: 0.8rem" class="m-0">
+                            Messaggio inviato il
+                            {{searchContact()[activeContact].messages.at(-1).date.split(' ')[0]}} alle
+                            {{message.time}}
+                          </p>
+                        </div>
+
+
+                      </li>
+
                       <li><a class="dropdown-item" href="#" @click="deleteMessage(index, activeContact)">Delete
                           message</a>
                       </li>
+
                     </ul>
+
                   </div>
+
                 </div>
 
 
