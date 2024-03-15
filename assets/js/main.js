@@ -304,5 +304,6 @@ createApp({
   },
   created() {
     this.messageTimeWithoutSeconds();
+    console.log(this.searchContact()[0].messages.length);
   }
 }).mount('#app')

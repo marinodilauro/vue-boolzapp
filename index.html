@@ -80,8 +80,10 @@
                 </div>
                 <div class="text_overflow hide_md d-flex flex-column justify-content-center">
                   <div class="contact_name">{{contact.name}}</div>
-                  <div class="last_message text_overflow">{{contact.messages.at(-1).message}}</div>
-                  <div class="time">{{contact.messages.at(-1).time}}</div>
+                  <div class="last_message text_overflow" v-if="contact.messages.length > 0">
+                    {{contact.messages.at(-1).message}}</div>
+                  <div class="time" v-if="contact.messages.length > 0">
+                    {{contact.messages.at(-1).time}}</div>
                 </div>
               </div>
 
@@ -100,7 +102,8 @@
                 <img :src="searchContact()[activeContact].avatar" alt="">
                 <div class="text_overflow">
                   <div class="contact_name">{{searchContact()[activeContact].name}}</div>
-                  <div class="last_access text_overflow"> Ultimo accesso il
+                  <div class="last_access text_overflow" v-if="searchContact()[activeContact].messages.length > 0">
+                    Ultimo accesso il
                     {{searchContact()[activeContact].messages.at(-1).date.split(' ')[0]}} alle
                     {{searchContact()[activeContact].messages.at(-1).time}}
                   </div>
@@ -118,10 +121,11 @@
 
               <div class=" d-flex flex-column justify-content-center align-items-end"
                 v-for="(message, index) in searchContact()[activeContact].messages" :class="message.status">
-                <div class="d-flex">
+                <div class="d-flex" v-if="searchContact()[activeContact].messages.length > 0">
 
                   <!-- Message -->
-                  <div class="message ps-2 pt-2"> {{message.message}} </div>
+                  <div class="message ps-2 pt-2">
+                    {{message.message}} </div>
 
 
                   <!--  <div class="msg_menu d-flex flex-column justify-content-center align-self-start">
