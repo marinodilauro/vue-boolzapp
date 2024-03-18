@@ -83,7 +83,8 @@
                   <div class="last_message text_overflow" v-if="contact.messages.length > 0">
                     {{contact.messages.at(-1).message}}</div>
                   <div class="time" v-if="contact.messages.length > 0">
-                    {{contact.messages.at(-1).time}}</div>
+                    {{contact.messages.at(-1).date.split(' ')[1].split(':').slice(0, 2).join(':')}}
+                  </div>
                 </div>
               </div>
 
@@ -105,7 +106,8 @@
                   <div class="last_access text_overflow" v-if="searchContact()[activeContact].messages.length > 0">
                     Ultimo accesso il
                     {{searchContact()[activeContact].messages.at(-1).date.split(' ')[0]}} alle
-                    {{searchContact()[activeContact].messages.at(-1).time}}
+                    {{messageTimeWithoutSeconds(searchContact(), activeContact, searchContact()[activeContact].messages,
+                    index, searchContact()[activeContact].messages.at(-1).date)}}
                   </div>
                 </div>
               </div>
@@ -126,58 +128,6 @@
                   <!-- Message -->
                   <div class="message ps-2 pt-2">
                     {{message.message}} </div>
-
-
-                  <!--  <div class="msg_menu d-flex flex-column justify-content-center align-self-start">
-                    <i class="msg_options_icon fa-solid fa-chevron-down"></i>
-                    <div class="msg_actions hide">
-
-
-                      <div class="reactions">
-                        <ul class="d-flex">
-                          <li class="d-flex"><a href="#">👍</a></li>
-                          <li class="d-flex"><a href="#">❤️</a></li>
-                          <li class="d-flex"><a href="#">😂</a></li>
-                          <li class="d-flex"><a href="#">😯</a></li>
-                          <li class="d-flex"><a href="#">😢</a></li>
-                        </ul>
-                      </div>
-                      <hr>
-
-
-                      <div class="reply">
-                        <a href="#"><i class="fa-solid fa-reply"></i>
-                          Rispondi</a>
-                      </div>
-                      <div class="copy">
-                        <a href="#"><i class="fa-solid fa-copy"></i>
-                          Copia</a>
-                      </div>
-                      <hr>
-
-
-                      <div class="forward">
-                        <a href="#"><i class="fa-solid fa-share"></i>
-                          Inoltra</a>
-                      </div>
-                      <div class="important">
-                        <a href="#"> <i class="fa-regular fa-star"></i>
-                          Importante</a>
-                      </div>
-                      <div class="delete">
-                        <a href="#"> <i class="fa-regular fa-trash-can"></i>
-                          Elimina</a>
-                      </div>
-                      <hr>
-
-
-                      <div class="select">
-                        <a href="#"><i class="fa-regular fa-square-check"></i>
-                          Seleziona</a>
-                      </div>
-
-                    </div>
-                  </div> -->
 
                   <div class="dropdown">
                     <button class="btn backgroud-transparent" type="button" data-bs-toggle="dropdown"
@@ -214,10 +164,11 @@
                           <p style="font-size: 0.8rem" class="m-0">
                             Messaggio inviato il
                             {{searchContact()[activeContact].messages.at(-1).date.split(' ')[0]}} alle
-                            {{message.time}}
+                            {{messageTimeWithoutSeconds(searchContact(), activeContact,
+                            searchContact()[activeContact].messages,
+                            index, searchContact()[activeContact].messages[index].date)}}
                           </p>
                         </div>
-
 
                       </li>
 
@@ -233,7 +184,8 @@
 
 
                 <div class="time justify-content-center align-items-end">
-                  {{message.time}}
+                  {{messageTimeWithoutSeconds(searchContact(), activeContact, searchContact()[activeContact].messages,
+                  index, searchContact()[activeContact].messages[index].date)}}
                 </div>
 
               </div>

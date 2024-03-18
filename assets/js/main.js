@@ -194,7 +194,6 @@ createApp({
 
     /** Function that show only hours and minutes in messages time
      * 
-     * The function cycles though every message of every contact.
      * Takes the time format in "dd/mm/yy hh:mm:ss" and splits first in two again in two values, hours and minutes.
      * Creates two variables for hours and mninutes.
      * For each variable takes the message time format in "dd/mm/yy hh:mm:ss" and splits it in two parts.
@@ -205,27 +204,23 @@ createApp({
      * The function finally assign the new date to all the messages in the list.
      * This works also for the new messages written adn received.
      * 
+     * @param {Array} contacts The list of contacts
+     * @param {number} contactIndex The index of the user is chatting with (the active contact)
+     * @param {Array} messagesList The list of messages of the active contact
+     * @param {number} messageIndex The index of the message the function is working on
+     * @param {string} messageDate The original 'date' property of hte message
      */
-    messageTimeWithoutSeconds() {
+    messageTimeWithoutSeconds(contacts, contactIndex, messagesList, messageIndex, messageDate) {
 
-      for (const contact in this.contacts) {
-        if (Object.hasOwnProperty.call(this.contacts, contact)) {
-          const element = this.contacts[contact];
+      // messageDate = contacts.messagesList[messageIndex].date;
+      console.log(messageDate);
 
-          for (const property in element.messages) {
-            let prop = element.messages[property];
+      const messageHour = messageDate.split(' ').slice(1, 2)[0].split(':')[0];
+      const messageMinute = messageDate.split(' ').slice(1, 2)[0].split(':')[1];
 
-            const messageHour = prop.date.split(' ').slice(1, 2)[0].split(':')[0];
-            const messageMinute = prop.date.split(' ').slice(1, 2)[0].split(':')[1];
+      const newTimeFormat = `${messageHour}:${messageMinute}`;
 
-            const newTimeFormat = `${messageHour}:${messageMinute}`;
-
-            prop.time = newTimeFormat;
-
-          }
-
-        };
-      };
+      return messageDate = newTimeFormat;
 
     },
 
@@ -267,14 +262,6 @@ createApp({
      */
     addMessage(activeContactIndex) {
 
-      const messageHour = this.newMessage.date.split(' ').slice(1, 2)[0].split(':')[0];
-
-      const messageMinute = this.newMessage.date.split(' ').slice(1, 2)[0].split(':')[1];
-
-      const newTimeFormat = `${messageHour}:${messageMinute}`;
-
-      this.newMessage = { ...this.newMessage, date: newTimeFormat };
-
       this.contacts[activeContactIndex].messages.push(this.newMessage);
 
       this.newMessage = { ...this.newMessage, message: '' };
@@ -300,7 +287,7 @@ createApp({
 
   },
   created() {
-    this.messageTimeWithoutSeconds();
-    console.log(this.searchContact()[0].messages.length);
+    // this.messageTimeWithoutSeconds();
+    // console.log(this.searchContact()[0].messages.length);
   }
 }).mount('#app')
