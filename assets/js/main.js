@@ -15,6 +15,12 @@ createApp({
       // Contacts list
       contacts: [
         {
+          name: 'Kanye West',
+          avatar: './assets/img/OIG1.jpeg',
+          visible: true,
+          messages: [],
+        },
+        {
           name: 'Michele',
           avatar: './assets/img/avatar_1.jpg',
           visible: true,
@@ -207,13 +213,10 @@ createApp({
      * @param {Array} contacts The list of contacts
      * @param {number} contactIndex The index of the user is chatting with (the active contact)
      * @param {Array} messagesList The list of messages of the active contact
-     * @param {number} messageIndex The index of the message the function is working on
+     * @param {number} [messageIndex] The index of the message the function is working on
      * @param {string} messageDate The original 'date' property of hte message
      */
     messageTimeWithoutSeconds(contacts, contactIndex, messagesList, messageIndex, messageDate) {
-
-      // messageDate = contacts.messagesList[messageIndex].date;
-      console.log(messageDate);
 
       const messageHour = messageDate.split(' ').slice(1, 2)[0].split(':')[0];
       const messageMinute = messageDate.split(' ').slice(1, 2)[0].split(':')[1];
@@ -235,7 +238,7 @@ createApp({
 
       let contactslist;
 
-      if (!this.searchBarInput.length) {
+      if (this.searchBarInput.length === 0) {
 
         contactslist = this.contacts;
 
@@ -262,9 +265,12 @@ createApp({
      */
     addMessage(activeContactIndex) {
 
-      this.contacts[activeContactIndex].messages.push(this.newMessage);
+      if (this.newMessage.message.length > 0) {
 
-      this.newMessage = { ...this.newMessage, message: '' };
+        this.contacts[activeContactIndex].messages.push(this.newMessage);
+
+        this.newMessage = { ...this.newMessage, message: '' };
+      }
 
     },
 
@@ -278,16 +284,18 @@ createApp({
 
       setTimeout(() => {
 
-        receivedMessage = { ...this.newMessage, message: 'Ok', status: 'received' };
+        axios
+          .get('https://api.kanye.rest')
+          .then((response) => {
 
-        this.contacts[activeContactIndex].messages.push(receivedMessage);
+            console.log(response);
+            receivedMessage = { ...this.newMessage, message: response.data.quote, status: 'received' };
+
+            this.contacts[activeContactIndex].messages.push(receivedMessage);
+          })
 
       }, 1000, activeContactIndex)
-    }
 
-  },
-  created() {
-    // this.messageTimeWithoutSeconds();
-    // console.log(this.searchContact()[0].messages.length);
+    }
   }
 }).mount('#app')

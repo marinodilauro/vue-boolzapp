@@ -48,7 +48,7 @@
               <ul class="icon_group hide_md d-flex align-items-center m-0">
                 <li><a href="#"><i class="fa-solid fa-lg fa-circle-notch"></i></a></li>
                 <li><a href="#"><i class="fa-solid fa-lg fa-message"></i></a></li>
-                <li><a href="#"><i class="fa-solid fa-lg fa-ellipsis-vertical"></a></i></li>
+                <li><a href="#"><i class="fa-solid fa-lg fa-ellipsis-vertical"></i></a></li>
               </ul>
             </div>
 
@@ -105,16 +105,17 @@
                   <div class="contact_name">{{searchContact()[activeContact].name}}</div>
                   <div class="last_access text_overflow" v-if="searchContact()[activeContact].messages.length > 0">
                     Ultimo accesso il
-                    {{searchContact()[activeContact].messages.at(-1).date.split(' ')[0]}} alle
-                    {{messageTimeWithoutSeconds(searchContact(), activeContact, searchContact()[activeContact].messages,
-                    index, searchContact()[activeContact].messages.at(-1).date)}}
+                    {{searchContact()[activeContact].messages.at(-1).date.split(' ')[0]}}
+                    alle
+                    {{searchContact()[activeContact].messages.at(-1).date.split(' ')[1].split(':').slice(0,
+                    2).join(':')}}
                   </div>
                 </div>
               </div>
               <ul class="icon_group hide_sm d-flex align-items-center m-0">
                 <li><a href="#"><i class="fa-solid fa-lg fa-magnifying-glass"></i></a></li>
-                <li><a href="#"><i class="fa-solid fa-lg fa-paperclip"></i></i></a></li>
-                <li><a href="#"><i class="fa-solid fa-lg fa-ellipsis-vertical"></a></i></li>
+                <li><a href="#"><i class="fa-solid fa-lg fa-paperclip"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-lg fa-ellipsis-vertical"></i></a></li>
               </ul>
             </div>
 
@@ -172,7 +173,8 @@
 
                       </li>
 
-                      <li><a class="dropdown-item" href="#" @click="deleteMessage(index, activeContact)">Delete
+                      <li>
+                        <a class="dropdown-item" href="#" @click="deleteMessage(index, activeContact)">Delete
                           message</a>
                       </li>
 
@@ -208,6 +210,11 @@
 
   <!-- Vue JS Link -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- Axios link -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js'
+    integrity='sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=='
+    crossorigin='anonymous' referrerpolicy='no-referrer'></script>
 
   <!-- Luxon JS Link -->
   <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
