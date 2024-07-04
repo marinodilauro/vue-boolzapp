@@ -38,3 +38,7 @@ Boolzapp è una web application che replica le funzionalità principali di Whats
 - **JavaScript (ES6+)**: Logica di programmazione e manipolazione del DOM
 - **Vue.js**: Framework per la creazione di interfacce utente reattive
 - **Axios** (opzionale): Gestione delle richieste HTTP per future integrazioni backend
+
+## Visualizzare il progetto
+
+Si può visionare il progetto a questo indirizzo https://marinodilauro.github.io/vue-boolzapp/
