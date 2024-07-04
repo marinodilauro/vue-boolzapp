@@ -1,28 +1,40 @@
-# Boolzapp - a (not very) innovative messaging platform
+# Boolzapp - Clone di WhatsApp Web
 
-## Milestone 1
-- Replica della grafica con la possibilità di avere messaggi scritti dall’utente (verdi) e
- dall’interlocutore (bianco) assegnando due classi CSS diverse
-- Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare
- nome e immagine di ogni contatto
+## Descrizione del Progetto
 
-## Milestone 2
-- Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i
- messaggi relativi al contatto attivo all’interno del pannello della conversazione
-- Click sul contatto mostra la conversazione del contatto cliccato
+Boolzapp è una web application che replica le funzionalità principali di WhatsApp Web. Questo progetto è stato sviluppato per dimostrare competenze avanzate in front-end development, con particolare focus sull'uso di Vue.js per la creazione di interfacce utente dinamiche e reattive.
 
-## Milestone 3
-- Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando
- “enter” il testo viene aggiunto al thread sopra, come messaggio verde
-- Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà
- un “ok” come risposta, che apparirà dopo 1 secondo
+## Funzionalità Principali
 
-## Milestone 4
-- Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i
- contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina-> Scrivo
- “mar” rimangono solo Marco e Martina)
+### Interfaccia Utente
+- Design responsive che replica fedelmente l'aspetto di WhatsApp Web
+- Lista contatti dinamica con avatar e informazioni dell'ultimo messaggio
+- Area di chat con distinzione visiva tra messaggi inviati e ricevuti
+- Input per la composizione e l'invio di nuovi messaggi
 
-## Milestone 5 - opzionale
-- Cancella messaggio: cliccando sul messaggio appare un menu a tendina che
- permette di cancellare il messaggio selezionato
-- Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
+### Gestione Contatti e Conversazioni
+- Visualizzazione dinamica dei contatti con nome e immagine del profilo
+- Selezione dei contatti per visualizzare le conversazioni corrispondenti
+- Aggiornamento in tempo reale della lista contatti e delle conversazioni
+
+### Sistema di Messaggistica
+- Invio di messaggi testuali tramite input dedicato
+- Visualizzazione istantanea dei messaggi inviati nella chat
+- Simulazione di risposta automatica dal contatto ("ok") dopo 1 secondo dall'invio
+
+### Funzionalità di Ricerca
+- Barra di ricerca per filtrare i contatti in tempo reale
+- Visualizzazione dei risultati della ricerca aggiornati mentre l'utente digita
+
+### Gestione Avanzata dei Messaggi
+- Menu contestuale per la cancellazione dei messaggi
+- Visualizzazione dell'orario di invio per ciascun messaggio
+- Aggiornamento dell'anteprima dell'ultimo messaggio nella lista contatti
+
+## Tecnologie Utilizzate
+
+- **HTML5**: Struttura semantica della pagina
+- **CSS3**: Styling avanzato e layout responsive
+- **JavaScript (ES6+)**: Logica di programmazione e manipolazione del DOM
+- **Vue.js**: Framework per la creazione di interfacce utente reattive
+- **Axios** (opzionale): Gestione delle richieste HTTP per future integrazioni backend
