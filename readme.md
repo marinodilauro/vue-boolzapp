@@ -1,5 +1,7 @@
 # Boolzapp - Clone di WhatsApp Web
 
+![Screenshot di Boolzapp](img/screenshot.png "Home page di Boolzapp")
+
 ## Descrizione del Progetto
 
 Boolzapp è una web application che replica le funzionalità principali di WhatsApp Web. Questo progetto è stato sviluppato per dimostrare competenze avanzate in front-end development, con particolare focus sull'uso di Vue.js per la creazione di interfacce utente dinamiche e reattive.
