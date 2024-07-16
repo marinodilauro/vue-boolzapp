@@ -36,7 +36,7 @@
       <div class="row h-100 g-0">
 
         <!-- Left side -->
-        <div class="col-4 hide_sm">
+        <div class="col-4 hide_sm d-flex flex-column">
           <div class="left_side h-100">
 
             <!-- Profile -->
@@ -72,7 +72,7 @@
             </div>
 
             <!-- Contacts -->
-            <div class="contacts text_overflow">
+            <div class="contacts text_overflow flex-fill">
 
               <div class="contact d-flex" v-for="(contact, index) in searchContact()" @click="activeContact = index">
                 <div class="profile_pic d-flex">
@@ -95,7 +95,7 @@
 
         <!-- Right side -->
         <div class="col-8">
-          <div class="right_side h-100">
+          <div class="right_side h-100 d-flex flex-column">
 
             <!-- Active contact -->
             <div class="active_contact d-flex justify-content-between align-items-center">
@@ -120,7 +120,7 @@
             </div>
 
             <!-- Chat -->
-            <div class="chat d-flex flex-column align-items-start">
+            <div class="chat d-flex flex-column align-items-start flex-fill">
 
               <div class=" d-flex flex-column justify-content-center align-items-end"
                 v-for="(message, index) in searchContact()[activeContact].messages" :class="message.status">
