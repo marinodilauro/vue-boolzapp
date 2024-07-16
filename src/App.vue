@@ -1,6 +1,6 @@
-const { createApp } = Vue;
-
-createApp({
+<script>
+export default {
+  name: 'App',
   data() {
     return {
       receivedMessage: null,
@@ -16,13 +16,13 @@ createApp({
       contacts: [
         {
           name: 'ChatBot',
-          avatar: './assets/img/chatbot_avatar.avif',
+          avatar: 'img/chatbot_avatar.avif',
           visible: true,
           messages: [],
         },
         {
           name: 'Michele',
-          avatar: './assets/img/avatar_1.jpg',
+          avatar: 'img/avatar_1.jpg',
           visible: true,
           messages: [
             {
@@ -44,7 +44,7 @@ createApp({
         },
         {
           name: 'Fabio',
-          avatar: './assets/img/avatar_2.jpg',
+          avatar: 'img/avatar_2.jpg',
           visible: true,
           messages: [
             {
@@ -67,7 +67,7 @@ createApp({
         },
         {
           name: 'Samuele',
-          avatar: './assets/img/avatar_3.jpg',
+          avatar: 'img/avatar_3.jpg',
           visible: true,
           messages: [
             {
@@ -89,7 +89,7 @@ createApp({
         },
         {
           name: 'Alessandro B.',
-          avatar: './assets/img/avatar_4.jpg',
+          avatar: 'img/avatar_4.jpg',
           visible: true,
           messages: [
             {
@@ -106,7 +106,7 @@ createApp({
         },
         {
           name: 'Alessandro L.',
-          avatar: './assets/img/avatar_5.jpg',
+          avatar: 'img/avatar_5.jpg',
           visible: true,
           messages: [
             {
@@ -123,7 +123,7 @@ createApp({
         },
         {
           name: 'Claudia',
-          avatar: './assets/img/avatar_6.jpg',
+          avatar: 'img/avatar_6.jpg',
           visible: true,
           messages: [
             {
@@ -145,7 +145,7 @@ createApp({
         },
         {
           name: 'Federico',
-          avatar: './assets/img/avatar_7.jpg',
+          avatar: 'img/avatar_7.jpg',
           visible: true,
           messages: [
             {
@@ -162,7 +162,7 @@ createApp({
         },
         {
           name: 'Davide',
-          avatar: './assets/img/avatar_8.jpg',
+          avatar: 'img/avatar_8.jpg',
           visible: true,
           messages: [
             {
@@ -306,7 +306,7 @@ createApp({
           ]
         }, {
           headers: {
-            'Authorization': 'Bearer ' + process.env.OPENAI_APP_API_KEY,
+            'Authorization': 'Bearer ' + import.meta.env.VITE_APP_API_KEY,
             'Content-Type': 'application/json'
           }
         });
@@ -324,14 +324,183 @@ createApp({
       }
     }
   }
-}).mount('#app')
+}
+</script>
 
-/* axios
-  .get('https://api.openai.com/v1/chat/completions')
-  .then((response) => {
+<template>
+  <div class="container mt-4 p-0">
+    <div class="row h-100 g-0">
 
-    console.log(response);
-    receivedMessage = { ...this.newMessage, message: response.data.quote, status: 'received' };
+      <!-- Left side -->
+      <div class="col-4 hide_sm ">
+        <div class="left_side h-100 d-flex flex-column">
 
-    this.contacts[activeContactIndex].messages.push(receivedMessage);
-  })*/
+          <!-- Profile -->
+          <div class="profile d-flex justify-content-between">
+            <div class="profile_pic d-flex">
+              <img src="/public/img/avatar_io.jpg" alt="">
+              <span>Sofia</span>
+            </div>
+            <ul class="icon_group hide_md d-flex align-items-center m-0">
+              <li><a href="#"><i class="fa-solid fa-lg fa-circle-notch"></i></a></li>
+              <li><a href="#"><i class="fa-solid fa-lg fa-message"></i></a></li>
+              <li><a href="#"><i class="fa-solid fa-lg fa-ellipsis-vertical"></i></a></li>
+            </ul>
+          </div>
+
+          <!-- Notifications -->
+          <div class="notifications d-flex hide_md">
+            <div class="notification_icon d-flex justify-content-center align-items-center">
+              <i class="fa-solid fa-lg fa-bell-slash"></i>
+            </div>
+            <div class="toggle_notifications text_overflow">
+              <div class="text_overflow">Ricevi notifiche di nuovi messaggi</div>
+              <div><a href="#">Attiva notifiche desktop</a></div>
+            </div>
+          </div>
+
+          <!-- Search bar -->
+          <div class="search hide_md d-flex align-items-center px-4">
+            <div class="search_bar rounded d-flex align-items-center">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="search" placeholder="Cerca o inizia una nuova chat" v-model="searchBarInput">
+            </div>
+          </div>
+
+          <!-- Contacts -->
+          <div class="contacts text_overflow flex-fill">
+
+            <div class="contact d-flex" v-for="(contact, index) in searchContact()" @click="activeContact = index">
+              <div class="profile_pic d-flex">
+                <img :src="contact.avatar" alt="">
+              </div>
+              <div class="text_overflow hide_md d-flex flex-column justify-content-center">
+                <div class="contact_name">{{ contact.name }}</div>
+                <div class="last_message text_overflow" v-if="contact.messages.length > 0">
+                  {{ contact.messages.at(-1).message }}</div>
+                <div class="time" v-if="contact.messages.length > 0">
+                  {{ contact.messages.at(-1).date.split(' ')[1].split(':').slice(0, 2).join(':') }}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Right side -->
+      <div class="col-8">
+        <div class="right_side h-100 d-flex flex-column">
+
+          <!-- Active contact -->
+          <div class="active_contact d-flex justify-content-between align-items-center">
+            <div class="profile_pic d-flex align-items-center">
+              <img :src="searchContact()[activeContact].avatar" alt="">
+              <div class="text_overflow">
+                <div class="contact_name">{{ searchContact()[activeContact].name }}</div>
+                <div class="last_access text_overflow" v-if="searchContact()[activeContact].messages.length > 0">
+                  Ultimo accesso il
+                  {{ searchContact()[activeContact].messages.at(-1).date.split(' ')[0] }}
+                  alle
+                  {{ searchContact()[activeContact].messages.at(-1).date.split(' ')[1].split(':').slice(0,
+                    2).join(':') }}
+                </div>
+              </div>
+            </div>
+            <ul class="icon_group hide_sm d-flex align-items-center m-0">
+              <li><a href="#"><i class="fa-solid fa-lg fa-magnifying-glass"></i></a></li>
+              <li><a href="#"><i class="fa-solid fa-lg fa-paperclip"></i></a></li>
+              <li><a href="#"><i class="fa-solid fa-lg fa-ellipsis-vertical"></i></a></li>
+            </ul>
+          </div>
+
+          <!-- Chat -->
+          <div class="chat d-flex flex-column align-items-start flex-fill">
+
+            <div class=" d-flex flex-column justify-content-center align-items-end"
+              v-for="(message, index) in searchContact()[activeContact].messages" :class="message.status">
+              <div class="d-flex" v-if="searchContact()[activeContact].messages.length > 0">
+
+                <!-- Message -->
+                <div class="message ps-2 pt-2">
+                  {{ message.message }} </div>
+
+                <div class="dropdown">
+                  <button class="btn backgroud-transparent" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" data-bs-auto-close="outside">
+                    <i class="msg_options_icon fa-solid fa-chevron-down"></i>
+                  </button>
+
+
+                  <ul class="dropdown-menu">
+
+                    <li>
+                      <ul class="d-flex justify-content-between p-1">
+                        <li><a class="dropdown-item p-1" href="#">👍</a></li>
+                        <li><a class="dropdown-item p-1" href="#">❤️</a></li>
+                        <li><a class="dropdown-item p-1" href="#">😂</a></li>
+                        <li><a class="dropdown-item p-1" href="#">😯</a></li>
+                        <li><a class="dropdown-item p-1" href="#">😢</a></li>
+                      </ul>
+
+                    </li>
+
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="dropend">
+
+                      <a class="dropdown-item backgroud-transparent text-start" data-bs-toggle="dropdown"
+                        aria-expanded="false" href="#">
+                        Messageinfo
+                      </a>
+
+                      <div class="dropdown-menu p-1 text-body-secondary">
+                        <p style="font-size: 0.8rem" class="m-0">
+                          Messaggio inviato il
+                          {{ searchContact()[activeContact].messages.at(-1).date.split(' ')[0] }} alle
+                          {{ messageTimeWithoutSeconds(searchContact(), activeContact,
+                            searchContact()[activeContact].messages,
+                            index, searchContact()[activeContact].messages[index].date) }}
+                        </p>
+                      </div>
+
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" href="#" @click="deleteMessage(index, activeContact)">Delete
+                        message</a>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+
+
+              <div class="time justify-content-center align-items-end">
+                {{ messageTimeWithoutSeconds(searchContact(), activeContact, searchContact()[activeContact].messages,
+                  index, searchContact()[activeContact].messages[index].date) }}
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Input message -->
+          <div class="input_message d-flex">
+            <a href="#"><i class="hide_sm fa-regular fa-xl fa-face-smile"></i></a>
+            <input type="text" placeholder="Scrivi un messaggio" v-model.trim="newMessage.message"
+              @keydown.enter="addMessage(activeContact)">
+            <a href="#"><i class="hide_sm fa-solid fa-xl fa-microphone"></i></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style></style>
