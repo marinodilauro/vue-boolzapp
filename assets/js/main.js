@@ -15,8 +15,8 @@ createApp({
       // Contacts list
       contacts: [
         {
-          name: 'Kanye West',
-          avatar: './assets/img/OIG1.jpeg',
+          name: 'ChatBot',
+          avatar: './assets/img/chatbot_avatar.avif',
           visible: true,
           messages: [],
         },
@@ -269,7 +269,11 @@ createApp({
 
         this.contacts[activeContactIndex].messages.push(this.newMessage);
 
+        const sentMessage = { ...this.newMessage };
+
         this.newMessage = { ...this.newMessage, message: '' };
+
+        this.replyMessage(activeContactIndex, sentMessage.message)
       }
 
     },
@@ -280,22 +284,54 @@ createApp({
      * 
      * @param {number} activeContactIndex The index of the contact you are chatting with
      */
-    replyMessage(activeContactIndex) {
+    async replyMessage(activeContactIndex, sentMessage) {
 
-      setTimeout(() => {
+      try {
+        // Attendiamo 1 secondo prima di fare la richiesta API
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
-        axios
-          .get('https://api.kanye.rest')
-          .then((response) => {
+        const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+          model: 'gpt-3.5-turbo',
+          temperature: 1.3,
+          max_tokens: 100,
+          messages: [
+            {
+              role: 'system',
+              content: "Sei un chatbot per un progetto di chat di un'applicazione web. Il tuo compito principale è fornire un messaggio di risposta ai messaggi che ricevi come prompt. Ti verrà fornito il contenuto del messaggio e devi restituire una risposta e nient'altro."
+            },
+            {
+              role: 'user',
+              content: sentMessage
+            }
+          ]
+        }, {
+          headers: {
+            'Authorization': 'Bearer ' + process.env.OPENAI_APP_API_KEY,
+            'Content-Type': 'application/json'
+          }
+        });
 
-            console.log(response);
-            receivedMessage = { ...this.newMessage, message: response.data.quote, status: 'received' };
+        console.log(response.data.choices[0]);
+        console.log(sentMessage);
 
-            this.contacts[activeContactIndex].messages.push(receivedMessage);
-          })
+        const generatedText = response.data.choices[0].message.content;
 
-      }, 1000, activeContactIndex)
+        const receivedMessage = { ...this.newMessage, message: generatedText, status: 'received' };
+        this.contacts[activeContactIndex].messages.push(receivedMessage);
 
+      } catch (error) {
+        console.error('Error:', error.response ? error.response.data : error.message);
+      }
     }
   }
 }).mount('#app')
+
+/* axios
+  .get('https://api.openai.com/v1/chat/completions')
+  .then((response) => {
+
+    console.log(response);
+    receivedMessage = { ...this.newMessage, message: response.data.quote, status: 'received' };
+
+    this.contacts[activeContactIndex].messages.push(receivedMessage);
+  })*/
