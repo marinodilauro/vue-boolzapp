@@ -190,8 +190,8 @@ export default {
 
     deleteMessage(messageIndex, contactIndex) {
 
-      messagesList = this.searchContact()[contactIndex].messages;
-      selectedMessage = this.searchContact()[contactIndex].messages[messageIndex];
+      let messagesList = this.searchContact()[contactIndex].messages;
+      let selectedMessage = this.searchContact()[contactIndex].messages[messageIndex];
       console.log(messageIndex, contactIndex);
 
       messagesList.splice(messageIndex, 1);
@@ -292,12 +292,12 @@ export default {
 
         const response = await axios.post('https://api.openai.com/v1/chat/completions', {
           model: 'gpt-3.5-turbo',
-          temperature: 1.3,
+          temperature: 1.4,
           max_tokens: 100,
           messages: [
             {
               role: 'system',
-              content: "Sei un chatbot per un progetto di chat di un'applicazione web. Il tuo compito principale è fornire un messaggio di risposta ai messaggi che ricevi come prompt. Ti verrà fornito il contenuto del messaggio e devi restituire una risposta e nient'altro."
+              content: "Sei un chatbot per un progetto di chat di un'applicazione web. Il tuo compito principale è fornire un messaggio di risposta di massimo 100 caratteri ai messaggi che ricevi come prompt. Ti verrà fornito il contenuto del messaggio e devi restituire una risposta e nient'altro."
             },
             {
               role: 'user',
