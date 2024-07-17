@@ -43,4 +43,4 @@ Boolzapp è una web application che replica le funzionalità principali di Whats
 
 ## Visualizzare il progetto
 
-Si può visionare il progetto a questo indirizzo https://marinodilauro.github.io/vue-boolzapp/
+Si può visionare il progetto a questo indirizzo https://marinodilaurochat.netlify.app/
