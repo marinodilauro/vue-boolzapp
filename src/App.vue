@@ -328,20 +328,20 @@ export default {
 </script>
 
 <template>
-  <div class="container mt-4 p-0">
+  <div class="container mt-md-4 p-0 rounded-md">
     <div class="row h-100 g-0">
 
       <!-- Left side -->
-      <div class="col-4 hide_sm ">
+      <div class="col-4 hide_sm h-100">
         <div class="left_side h-100 d-flex flex-column">
 
           <!-- Profile -->
-          <div class="profile d-flex justify-content-between">
+          <div class="profile d-flex justify-content-between align-items-center">
             <div class="profile_pic d-flex">
               <img src="/public/img/avatar_io.jpg" alt="">
               <span>Sofia</span>
             </div>
-            <ul class="icon_group hide_md d-flex align-items-center m-0">
+            <ul class="icon_group hide_md d-flex align-items-center mx-3 mb-1 p-0">
               <li><a href="#"><i class="fa-solid fa-lg fa-circle-notch"></i></a></li>
               <li><a href="#"><i class="fa-solid fa-lg fa-message"></i></a></li>
               <li><a href="#"><i class="fa-solid fa-lg fa-ellipsis-vertical"></i></a></li>
@@ -390,7 +390,7 @@ export default {
 
 
       <!-- Right side -->
-      <div class="col-8">
+      <div class="col-12 col-md-8 h-100">
         <div class="right_side h-100 d-flex flex-column">
 
           <!-- Active contact -->
@@ -416,7 +416,7 @@ export default {
           </div>
 
           <!-- Chat -->
-          <div class="chat d-flex flex-column align-items-start flex-fill">
+          <div class="chat d-flex flex-column align-items-start">
 
             <div class=" d-flex flex-column justify-content-center align-items-end"
               v-for="(message, index) in searchContact()[activeContact].messages" :class="message.status">
@@ -490,11 +490,19 @@ export default {
           </div>
 
           <!-- Input message -->
-          <div class="input_message d-flex">
-            <a href="#"><i class="hide_sm fa-regular fa-xl fa-face-smile"></i></a>
-            <input type="text" placeholder="Scrivi un messaggio" v-model.trim="newMessage.message"
-              @keydown.enter="addMessage(activeContact)">
-            <a href="#"><i class="hide_sm fa-solid fa-xl fa-microphone"></i></a>
+          <div class="input_message d-flex p-2">
+
+            <a href="" class="d-flex justify-content-center align-items-center icon-link text-decoration-none">
+              <i class="fa-regular fa-xl fa-face-smile"></i>
+            </a>
+
+            <input type="text" class="flex-grow-1 mx-2" placeholder="Scrivi un messaggio"
+              v-model.trim="newMessage.message" @keydown.enter="addMessage(activeContact)">
+
+            <a href="#" class="d-flex justify-content-center align-items-center icon-link hide_sm text-decoration-none">
+              <i class="fa-solid fa-xl fa-microphone"></i>
+            </a>
+
           </div>
 
         </div>
