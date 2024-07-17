@@ -1,6 +1,6 @@
 # Boolzapp - Clone di WhatsApp Web
 
-![Screenshot di Boolzapp](public/img/screenshot.png "Home page di Boolzapp")
+![Video didi Boolzapp](public/img/vue-boolzapp.gif "Demo Boolzapp")
 
 ## Descrizione del Progetto
 
